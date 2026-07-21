@@ -14,6 +14,8 @@ cask "bitwarden"
 cask "logi-options+"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# All-in-one bookmark manager
+cask "raindropio"
 # Open-source code editor
 cask "visual-studio-code"
 vscode "openai.chatgpt"
