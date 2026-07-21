@@ -1,0 +1,16 @@
+# macOS metadata
+.DS_Store
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Private keys and certificates
+*.key
+*.pem
