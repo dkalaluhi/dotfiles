@@ -6,3 +6,5 @@
 - Added fzf shell integration
 - Added fd
 - Built native two-line prompt with Git status
+- Added managed `.zshrc` and `.zprofile` files.
+- Replaced `~/.zshrc` and `~/.zprofile` with links to the dotfile repository.
