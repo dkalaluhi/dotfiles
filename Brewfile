@@ -10,6 +10,8 @@ brew "ripgrep"
 brew "tree"
 # Desktop password and login vault
 cask "bitwarden"
+# Web browser
+cask "google-chrome"
 # Software for Logitech devices
 cask "logi-options+"
 # Knowledge base that works on top of a local folder of plain text Markdown files
