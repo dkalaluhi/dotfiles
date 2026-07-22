@@ -4,6 +4,7 @@
 # Line 2: previous command failure indicator and input prompt
 
 autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
 
 # Allow variables and command substitution inside the prompt
 setopt PROMPT_SUBST
@@ -42,9 +43,8 @@ ${failure_indicator}❯ "
 }
 
 # Avoid registering the hook more than once when reloading .zshrc
-if (( ${precmd_functions[(Ie)_prompt_precmd]} == 0 )); then
-    precmd_functions+=(_prompt_precmd)
-fi
+add-zsh-hook -d precmd _prompt_precmd 2>/dev/null
+add-zsh-hook precmd _prompt_precmd
 
 # Do not use a right-side prompt...for now.
 RPROMPT=''
