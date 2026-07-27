@@ -4,6 +4,8 @@ brew "bat"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Display directories as trees (with optional color/HTML output)
