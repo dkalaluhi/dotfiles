@@ -11,6 +11,7 @@ gitcheck() {
     local -i needs_push=0
     local -i missing_upstream=0
     local -i ahead_count=0
+    local -i issues_found=0
 
     while IFS= read -r git_marker; do
         needs_staging=0
@@ -48,6 +49,8 @@ gitcheck() {
         fi
 
         if (( needs_staging || needs_commit || needs_push || missing_upstream )); then
+            issues_found=1
+
             print
             print -r -- "📁 $repo_name"
             git -C "$repo" status --short --branch
@@ -67,7 +70,9 @@ gitcheck() {
             if (( missing_upstream )); then
                 print -r -- " -> Current branch has a remote but no upstream"
             fi
-        else
+        fi
+
+        if (( ! issues_found )); then
             print -r -- " ℹ️ All repositories are clean. Great work!"
         fi
 
