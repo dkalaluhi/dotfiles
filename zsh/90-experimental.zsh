@@ -71,10 +71,9 @@ gitcheck() {
                 print -r -- " -> Current branch has a remote but no upstream"
             fi
         fi
-
-        if (( ! issues_found )); then
-            print -r -- " ℹ️ All repositories are clean. Great work!"
-        fi
-
     done < <(fd -HI '^\.git$' ~/Projects)
+
+    if (( ! issues_found )); then
+        print -r -- " ℹ️ All repositories are clean. Great work!"
+    fi
 }
