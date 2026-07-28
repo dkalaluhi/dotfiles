@@ -23,7 +23,7 @@ gitcheck() {
         repo=${git_marker:h}
         repo_name=${repo:t}
 
-        if ! git -C "$repo" diff --quiet; then
+        if ! git -C "$repo" diff --quiet --; then
             needs_staging=1
         fi
 
@@ -47,21 +47,27 @@ gitcheck() {
             fi
         fi
 
-        print
-        print -r -- "📁 $repo_name"
-        git -C "$repo" status --short --branch
+        if (( needs_staging || needs_commit || needs_push || missing_upstream )); then
+            print
+            print -r -- "📁 $repo_name"
+            git -C "$repo" status --short --branch
 
-        if (( needs_staging )); then
-            print -r -- " -> Files needed to be staged"
+            if (( needs_staging )); then
+                print -r -- " -> Files need to be staged"
+            fi
+
+            if (( needs_commit )); then
+                print -r -- " -> Staged changes need to be committed"
+            fi
+            
+            if (( needs_push )); then
+                print -r -- " -> $ahead_count commit(s) need to be pushed"
+            fi
+
+            if (( missing_upstream )); then
+                print -r -- " -> Current branch has a remote but no upstream"
+            fi
         fi
 
-        if (( needs_commit )); then
-            print -r -- " -> Files need to be committed"
-        fi
-        
-        if (( needs_push )); then
-            print -r -- " -> $ahead_count commit(s) need to be pushed"
-        fi
-        
     done < <(fd -HI '^\.git$' ~/Projects)
 }
