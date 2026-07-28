@@ -67,6 +67,8 @@ gitcheck() {
             if (( missing_upstream )); then
                 print -r -- " -> Current branch has a remote but no upstream"
             fi
+        else
+            print -r -- " ℹ️ All repositories are clean. Great work!"
         fi
 
     done < <(fd -HI '^\.git$' ~/Projects)
