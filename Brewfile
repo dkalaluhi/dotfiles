@@ -1,3 +1,5 @@
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Simple, fast and user-friendly alternative to find
@@ -12,6 +14,8 @@ brew "ripgrep"
 brew "tree"
 # Desktop password and login vault
 cask "bitwarden"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Web browser
 cask "google-chrome"
 # Software for Logitech devices
