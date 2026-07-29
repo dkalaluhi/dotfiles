@@ -1,0 +1,33 @@
+{
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.startupEditor": "none",
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.enablePreview": false,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 15,
+    "editor.lineHeight": 24,
+    "editor.fontLigatures": false,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "selection",
+    "editor.renderControlCharacters": false,
+    "editor.guides.indentation": true,
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.stickyScroll.enabled": true,
+    "editor.tabCompletion": "off",
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.wordBasedSuggestions": "off",
+    "editor.quickSuggestions": {
+        "comments": false,
+        "strings": false,
+        "other": true
+    },
+    "editor.snippetSuggestions": "bottom",
+    "editor.suggestSelection": "first",
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "off",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.tabs.enabled": false
+}

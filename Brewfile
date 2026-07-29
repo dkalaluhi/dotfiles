@@ -18,6 +18,8 @@ cask "bitwarden"
 cask "ghostty"
 # Web browser
 cask "google-chrome"
+# Grammarly for desktop
+cask "grammarly-desktop"
 # Software for Logitech devices
 cask "logi-options+"
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -26,4 +28,5 @@ cask "obsidian"
 cask "raindropio"
 # Open-source code editor
 cask "visual-studio-code"
+vscode "hashicorp.terraform"
 vscode "openai.chatgpt"

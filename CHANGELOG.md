@@ -1,5 +1,8 @@
 # Workstation Evolution
 
+## 2026-07-29
+- Added versioned VS Code settings with deliberate, non-Tab autocomplete behavior.
+
 ## 2026-07-21
 - Modularized Zsh configuration
 - Added native reload() function
