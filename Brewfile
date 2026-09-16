@@ -6,6 +6,8 @@ brew "bat"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Search tool like grep and The Silver Searcher
@@ -14,6 +16,8 @@ brew "ripgrep"
 brew "tree"
 # Desktop password and login vault
 cask "bitwarden"
+# Calendar software
+cask "fantastical"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
@@ -26,6 +30,8 @@ cask "logi-options+"
 cask "obsidian"
 # All-in-one bookmark manager
 cask "raindropio"
+# Team communication and collaboration software
+cask "slack"
 # Open-source code editor
 cask "visual-studio-code"
 vscode "hashicorp.terraform"
