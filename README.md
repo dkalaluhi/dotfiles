@@ -1,37 +1,47 @@
 # Dotfiles
 
-This repository contains the managed configuration for my Zsh environment and the Homebrew bundle supporting it.
+This repository contains the managed configuration for my Platform Engineering workstation. It is the executable definition of the workstation and is intended to produce a reporducible engineering environment.
 
 ## Repository Structure
 
 ```text
-dotfiles/
+dotfiles
 ├── Brewfile
 ├── CHANGELOG.md
+├── ghostty
+│   └── config
+├── gitconfig
 ├── README.md
+├── scripts
+│   └── bootstrap.sh
+├── vscode
+│   └── settings.json
 ├── zprofile
-├── zshrc
-└── zsh/
-    ├── 00-history.zsh
-    ├── 10-aliases.zsh
-    ├── 20-functions.zsh
-    ├── 40-fzf.zsh
-    ├── 80-prompt.zsh
-    └── 90-experimental.zsh
+├── zsh
+│   ├── 00-history.zsh
+│   ├── 10-aliases.zsh
+│   ├── 20-functions.zsh
+│   ├── 30-mise.zsh
+│   ├── 40-fzf.zsh
+│   ├── 80-prompt.zsh
+│   └── 90-experimental.zsh
+└── zshrc
 ```
 
 ## Prerequisites
 
-Before restoring these dotfiles, the workstation must have:
+Before restoring these dotfiles, ensure you have:
 
-- Git
-- Homebrew
+- A macOS workstation
+- Git installed
 - Working GitHub SSH authentication
 - Access to the private `dkalaluhi/dotfiles` repository
 
-The broader workstation recovery procedure is documented separately.
+The broader workstation recovery procedure is documented separately in my Commonplace.
 
-## Restore the Dotfiles
+---
+
+## Bootstrap Workstation
 
 ### 1. Clone the repository
 
@@ -40,83 +50,62 @@ mkdir -p ~/Projects
 git clone git@github.com:dkalaluhi/dotfiles.git ~/Projects/dotfiles
 cd ~/Projects/dotfiles
 ```
-
-### 2. Install repository dependencies
-
-Install the applications and command-line tools defined in the Brewfile:
+### 2. Run the bootstrap
 
 ```zsh
-brew bundle --file ~/Projects/dotfiles/Brewfile
+./scripts/bootstrap.sh
 ```
 
-### 3. Preserve existing Zsh configuration
+The bootstrap script will:
 
-Create timestamped backups of any existing configuration:
+- Verify the Xcode Command Line tools are installed.
+- Install Homebrew if necessary.
+- Install applications and command-line tools from the `Brewfile`.
+- Preserve existing unmanaged configuration.
+- Create the managed symbolic links.
+- Verify the managed configuration.
 
-```zsh
-backup_date=$(date +%Y%m%d-%H%M%S)
+The script is safe to execute multiple times.
 
-[[ -e ~/.config/zsh || -L ~/.config/zsh ]] &&
-    mv ~/.config/zsh ~/.config/zsh.backup-"$backup_date"
+## Verification
 
-[[ -e ~/.zshrc || -L ~/.zshrc ]] &&
-    mv ~/.zshrc ~/.zshrc.backup-"$backup_date"
+Open a new terminal and verify:
 
-[[ -e ~/.zprofile || -L ~/.zprofile ]] &&
-    mv ~/.zprofile ~/.zprofile.backup-"$backup_date"
-```
+- the native two-line prompt appears.
+- `reload` completes successfully
+- `mkcd` displays its usage message when called without an argument
+- `Ctrl-R` opens fuzzy history search.
+- Running `false` causes the next prompt to display the failure indicator.
 
-Keep these backups until the managed configuration has been tested successfully.
-
-### 4. Link the managed configuration
-
-```zsh
-mkdir -p ~/.config
-
-ln -s ~/Projects/dotfiles/zsh ~/.config/zsh
-ln -s ~/Projects/dotfiles/zshrc ~/.zshrc
-ln -s ~/Projects/dotfiles/zprofile ~/.zprofile
-```
-
-### 5. Verify the links
+Confirm the managed configuration:
 
 ```zsh
-ls -ld ~/.config/zsh ~/.zshrc ~/.zprofile
+type reload
+type mkcd
+type fzf
 
+ls -ld ~/.config/zsh
 readlink ~/.config/zsh
-readlink ~/.zshrc
-readlink ~/.zprofile
-```
 
-The links should resolve to files and directories under:
-
-```text
-/Users/dave.kalaluhi/Projects/dotfiles
-```
-
-### 6. Verify Zsh
-
-Start a clean login shell and confirm that the managed functions and dependencies load:
-
-```zsh
-zsh -lic 'type mkcd; type reload; type fzf'
+ls -l ~/.config/ghostty/config
+readlink ~/.config/ghostty/config
 ```
 
 Expected results include:
 
 ```text
-mkcd is a shell function
 reload is a shell function
+mkcd is a shell function
 fzf is /opt/homebrew/bin/fzf
 ```
 
-Open a new terminal and verify:
+The symbolic links should resolve to the managed configuration under:
 
-- The native two-line prompt appears.
-- `reload` completes successfully.
-- `mkcd` displays its usage message when called without an argument.
-- Running `false` causes the next prompt to display its failure indicator.
-- `Ctrl-R` opens fuzzy history search.
+```text
+~/Projects/dotfiles
+```
+
+---
 
 ## Making Changes
 
@@ -136,16 +125,27 @@ git commit -m "Describe the change"
 git push
 ```
 
-## VS Code
+## Design Principles
 
-VS Code user settings are stored in:
+This repository follows a few simple rules:
 
-```text
-vscode/settings.json
-Link them on macOS with:
-ln -sfn \
-  "$HOME/Projects/dotfiles/vscode/settings.json" \
-  "$HOME/Library/Application Support/Code/User/settings.json"
-VS Code extensions are managed through the vscode entries in the Brewfile.
+- Keep the workstation reproducible.
+- Prefer native tooling over large frameworks.
+- Install software only when it enables work.
+- Track intentional configuration, not machine state.
+- Never commit secrets.
 
-Never store credentials, private keys, tokens, or other secrets in this repository.
+---
+
+## Security
+
+Never store any of the following in this repository:
+
+- Private SSH keys
+- API keys
+- Authentication tokens
+- Passwords
+- Certificates containing private keys.
+- Environment files containing secrets
+
+Sensitive information belongs in teh operating system's Keychain, bitwarden, or another appropriate secret-management solution.
