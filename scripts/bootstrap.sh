@@ -100,6 +100,7 @@ elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 else
     fail "Homebrew installed but brew executable could not be located"
+fi
 
 #
 # Verify dotfiles repository
@@ -132,7 +133,7 @@ success "Homebrew bundle commplete"
 info "Creating configuration links..."
 
 link_item \
-    "${DOTFILES_DIR/zsh"} \
+    "${DOTFILES_DIR}/zsh" \
     "${HOME}/.config/zsh"
 
 link_item \
