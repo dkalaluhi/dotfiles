@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Default Light Modern",
+    "workbench.colorTheme": "Light Modern",
     "workbench.startupEditor": "none",
     "workbench.editor.showTabs": "multiple",
     "workbench.editor.tabSizing": "shrink",
@@ -29,5 +29,6 @@
     "files.insertFinalNewline": true,
     "files.autoSave": "off",
     "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.tabs.enabled": false
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.external.osxExec": "/Applications/Ghostty.app"
 }

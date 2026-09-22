@@ -1,0 +1,13 @@
+# Font
+font-family = JetBrains Mono
+font-size = 14
+
+# Window
+window-padding-x = 8
+window-padding-y = 8
+
+# Cursor
+cursor-style = block
+
+# Theme
+theme = light:GitHub Light,dark:GitHub Dark
