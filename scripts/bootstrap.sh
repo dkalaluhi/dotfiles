@@ -40,7 +40,7 @@ link_item() {
     local source="$1"
     local target="$2"
 
-    mkdir -p "$(dirname "target")"
+    mkdir -p "$(dirname "$target")"
 
     if [[ -L "$target" ]]; then
         local current
@@ -135,6 +135,14 @@ info "Creating configuration links..."
 link_item \
     "${DOTFILES_DIR}/zsh" \
     "${HOME}/.config/zsh"
+
+link_item \
+    "${DOTFILES_DIR}/zshrc" \
+    "${HOME}/.zshrc"
+
+link_item \
+    "${DOTFILES_DIR}/zprofile" \
+    "${HOME}/.zprofile"
 
 link_item \
     "${DOTFILES_DIR}/ghostty/config" \
