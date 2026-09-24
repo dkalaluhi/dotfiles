@@ -139,13 +139,12 @@ This repository follows a few simple rules:
 
 ## Security
 
-Never store any of the following in this repository:
+see: [SECURITY.md](SECURITY.md)
 
-- Private SSH keys
-- API keys
-- Authentication tokens
-- Passwords
-- Certificates containing private keys.
-- Environment files containing secrets
+---
 
-Sensitive information belongs in teh operating system's Keychain, bitwarden, or another appropriate secret-management solution.
+## License
+
+This repository is released under the MIT [License](LICENSE).
+
+The configuration is intended to serve as a reference implementation for a reproducible engineering workstation. Feel free to adapt it to your own environment.
