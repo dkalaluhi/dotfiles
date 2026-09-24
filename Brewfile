@@ -6,6 +6,8 @@ brew "bat"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Polyglot runtime manager (asdf rust clone)
@@ -36,3 +38,4 @@ cask "slack"
 cask "visual-studio-code"
 vscode "hashicorp.terraform"
 vscode "openai.chatgpt"
+vscode "openai.codex-audio"
