@@ -19,6 +19,27 @@ zstyle ':vcs_info:git:*' actionformats '%F{green}🌿 %b%f %F{magenta}(%a)%f%c%u
 zstyle ':vcs_info:git:*' stagedstr ' %F{yellow}+%f'
 zstyle ':vcs_info:git:*' unstagedstr ' %F{yellow}*%f'
 
+# dotfiles repository
+DOTFILES_REPO="$HOME/Projects/dotfiles
+
+# Dotfiles repository
+DOTFILES_REPO="$HOME/Projects/dotfiles"
+
+_dotfiles_status() {
+    DOTFILES_NOTICE=""
+
+    # Nothing to do if the repository doesn't exist.
+    [[ -d "$DOTFILES_REPO/.git" ]] || return
+
+    # Normal Git prompt handles this when we're inside the repo.
+    [[ "$PWD" == "$DOTFILES_REPO"* ]] && return
+
+    # Show a subtle reminder if dotfiles have uncommitted changes.
+    if [[ -n "$(git -C "$DOTFILES_REPO" status --porcelain 2>/dev/null)" ]]; then
+        DOTFILES_NOTICE="%F{yellow}⚙ dotfiles*%f"
+    fi
+}
+
 _prompt_precmd() {
     local exit_status=$?
 
@@ -48,3 +69,5 @@ add-zsh-hook precmd _prompt_precmd
 
 # Do not use a right-side prompt...for now.
 RPROMPT=''
+
+# TODO Add Precmds for new prompt
