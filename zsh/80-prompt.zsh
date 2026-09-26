@@ -20,9 +20,6 @@ zstyle ':vcs_info:git:*' stagedstr ' %F{yellow}+%f'
 zstyle ':vcs_info:git:*' unstagedstr ' %F{yellow}*%f'
 
 # dotfiles repository
-DOTFILES_REPO="$HOME/Projects/dotfiles
-
-# Dotfiles repository
 DOTFILES_REPO="$HOME/Projects/dotfiles"
 
 _dotfiles_status() {
@@ -45,6 +42,7 @@ _prompt_precmd() {
 
     # Refresh Git information before drawing each prompt.
     vcs_info
+    _dotfiles_status
 
     local remote_context=''
     local failure_indicator=''
@@ -68,6 +66,4 @@ add-zsh-hook -d precmd _prompt_precmd 2>/dev/null
 add-zsh-hook precmd _prompt_precmd
 
 # Do not use a right-side prompt...for now.
-RPROMPT=''
-
-# TODO Add Precmds for new prompt
+RPROMPT='${DOTFILES_NOTICE}'
