@@ -18,6 +18,8 @@ brew "ripgrep"
 brew "tree"
 # Desktop password and login vault
 cask "bitwarden"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Calendar software
 cask "fantastical"
 # Terminal emulator that uses platform-native UI and GPU acceleration
