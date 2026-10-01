@@ -14,6 +14,8 @@ brew "fzf"
 brew "gh"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Search tool like grep and The Silver Searcher
