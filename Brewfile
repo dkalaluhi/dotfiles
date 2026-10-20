@@ -1,3 +1,4 @@
+tap "instruqt/tap"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -22,6 +23,8 @@ brew "mise"
 brew "ripgrep"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Instruqt CLI
+brew "instruqt/tap/instruqt", trusted: true
 # Desktop password and login vault
 cask "bitwarden"
 # OpenAI's official ChatGPT desktop app
@@ -36,6 +39,8 @@ cask "google-chrome"
 cask "grammarly-desktop"
 # Software for Logitech devices
 cask "logi-options+"
+# Open-source software for live streaming and screen recording
+cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # All-in-one bookmark manager
