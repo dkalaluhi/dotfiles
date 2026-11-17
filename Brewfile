@@ -25,10 +25,16 @@ brew "ripgrep"
 brew "tree"
 # Instruqt CLI
 brew "instruqt/tap/instruqt", trusted: true
+# Display management tool
+cask "betterdisplay"
 # Desktop password and login vault
 cask "bitwarden"
+# Virtual Audio Driver
+cask "blackhole-2ch"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Assign keys, and then decorate and label them
+cask "elgato-stream-deck"
 # Calendar software
 cask "fantastical"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -39,6 +45,8 @@ cask "google-chrome"
 cask "grammarly-desktop"
 # Software for Logitech devices
 cask "logi-options+"
+# App to write, plan, collaborate, and get organised
+cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
